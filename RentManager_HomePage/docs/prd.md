@@ -1,0 +1,55 @@
+以下是 PM 產出的 PRD，請確認後我可以存檔並繼續流水線：
+
+---
+
+# PRD - App 靜態介紹網頁
+
+## 背景與目標
+為 Deam2Easy 的租屋管理 App（`com.rentmanager.app.byD2E`）建立 GitHub Pages 靜態介紹網頁，引導潛在用戶前往 Google Play 下載，成功指標為頁面下載按鈕點擊轉換率。
+
+## 功能範圍
+
+- **In scope:**
+  - 單頁靜態網站（HTML / CSS / JS，GitHub Pages 部署）
+  - Hero 區塊：App 名稱、Slogan、主視覺、下載按鈕（Google Play）
+  - 功能亮點區塊：3～5 個核心功能說明（含 icon）
+  - 截圖展示區塊：App 畫面 mockup 輪播（mobile frame）
+  - CTA 區塊：再次強調下載按鈕
+  - Footer：隱私政策連結、開發者資訊（Deam2Easy）
+  - 響應式設計（Mobile-first）、全繁體中文文案
+
+- **Out of scope:**
+  - 後端 / 任何 server-side 邏輯
+  - Apple App Store 連結 `[PM假設]` 目前僅 Android
+  - 多語系 `[PM假設]` 僅繁中
+  - 用戶登入、聯絡表單、SEO 進階設定
+
+## 驗收標準
+
+- [ ] **AC-1:** 首頁在 Chrome/Safari/Firefox 最新版桌機與手機均可正常顯示，無跑版
+- [ ] **AC-2:** Hero「立即下載」按鈕點擊後，正確跳轉至 Google Play 頁面（新分頁）
+- [ ] **AC-3:** 功能亮點區塊包含至少 3 項具名功能，每項有標題與說明（各 ≤ 30 字）
+- [ ] **AC-4:** 截圖展示區塊含至少 3 張截圖，手機寬度（≤ 480px）可橫向滑動
+- [ ] **AC-5:** GitHub Pages 部署後，URL 可直接訪問，HTTP 200
+- [ ] **AC-6:** 所有文字為繁體中文，無明顯錯字
+- [ ] **AC-7:** Footer 含隱私政策佔位連結與「© 2026 Deam2Easy」版權聲明
+- [ ] **AC-8:** Lighthouse Performance ≥ 85
+- [ ] **AC-9:** 純靜態檔案，不依賴任何後端服務
+
+## 非功能需求
+
+- **效能：** 首屏載入 ≤ 3 秒（4G）；圖片 ≤ 200KB/張
+- **安全：** 外部連結加 `rel="noopener noreferrer"`；無未授權第三方 tracker `[PM假設]`
+- **維護性：** 文案集中於單一 HTML 或獨立 JS 物件，方便修改
+
+---
+
+`[PM_DONE] task_id: TASK-20260401-001`
+
+---
+
+**兩個需要你確認的假設：**
+1. 目前是否只有 Android 版，無需 App Store 連結？
+2. App 的核心功能是「租屋管理」（收租記帳、房客管理、合約管理等）？這會影響功能亮點文案。
+
+確認後我可以存檔並繼續 **SA（系統架構）** 階段。

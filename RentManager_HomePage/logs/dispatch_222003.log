@@ -1,0 +1,20 @@
+========================================
+  Role   : dispatch
+  Task   : TASK-20260401-001
+  Time   : 2026-04-01 22:20:03
+========================================
+
+```
+[NEW_MISSION]
+type            : modify
+target_task_id  : TASK-20260401-001
+title           : 網頁文案與截圖更新
+priority        : normal
+complexity      : simple
+raw_instruction : 修改 TASK-20260401-001 網頁：租屋管家改為隨身租屋管家，截圖區換成真實 App 截圖
+clarified_instruction:
+  - 將網頁中所有「租屋管家」文字替換為「隨身租屋管家」
+  - 截圖區域改用真實 App 截圖圖片取代現有佔位圖或示意圖
+```
+
+[DISPATCH_DONE]

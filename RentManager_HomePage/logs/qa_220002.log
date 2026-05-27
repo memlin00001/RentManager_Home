@@ -1,0 +1,47 @@
+========================================
+  Role   : qa
+  Task   : TASK-20260401-001
+  Time   : 2026-04-01 22:00:02
+========================================
+
+# QA Report
+
+**verdict**: APPROVE
+
+## 驗收標準
+
+| AC | 條件 | 結果 | 說明 |
+|----|------|------|------|
+| AC-1 | 多瀏覽器、桌機/手機無跑版 | PASS | Mobile-first + media queries 640px/900px；flexbox/grid 配置正確；`clamp()` 字型自適應 |
+| AC-2 | Hero 下載按鈕跳轉 Google Play（新分頁） | PASS | `href` 含正確 package ID、`target="_blank"`、`rel="noopener noreferrer"` 齊備 |
+| AC-3 | ≥3 項具名功能，標題＋說明各 ≤30 字 | PASS | 共 5 項功能；說明文字 20–22 字，均符合 |
+| AC-4 | ≥3 張截圖，手機寬度可橫向滑動 | PASS | 4 張截圖；`overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch` 已設定 |
+| AC-5 | GitHub Pages 部署後 HTTP 200 | 待驗證 | 純靜態結構正確，需實際推版後確認 |
+| AC-6 | 全繁體中文，無明顯錯字 | PASS | 文案全繁中，未發現錯字 |
+| AC-7 | Footer 含隱私政策連結與版權聲明 | PASS | `privacy.html` 連結與 `© 2026 Deam2Easy` 均存在 |
+| AC-8 | Lighthouse Performance ≥ 85 | 待驗證 | 無重量級依賴、純靜態；Google Play 徽章引用外部 CDN 為主要不確定因素，需部署後跑分 |
+| AC-9 | 純靜態，不依賴後端服務 | PASS | 4 個靜態檔案，零後端呼叫 |
+
+## 缺陷清單
+
+| # | 嚴重度 | 位置 | 描述 | 建議 |
+|---|--------|------|------|------|
+| 1 | minor | `privacy.html` L45–46 | 聯絡 email `contact@deam2easy.com` 為佔位值（程式碼有 `SPEC_ISSUE` 標記），部署前若未替換將對外顯示可能無效的信箱 | 確認正式信箱後替換，或暫時移除 email 行 |
+| 2 | minor | `index.html` hero & CTA | Google Play 徽章圖片直接引用 Google CDN；若 CDN 不可用，下載按鈕區域顯示破圖，無 alt text fallback 視覺 | 將徽章圖片下載至 `assets/` 並更新 `src`（SD 已在 README 中說明） |
+| 3 | minor | `script.js` carousel | 無 JS 時 Prev/Next 按鈕無作用；手機可用原生滑動，桌機無替代操作 | 可加 `<noscript>` 說明或以 CSS-only scroll-snap 維持基本功能（目前影響極小） |
+| 4 | minor | `style.css` L≥900px carousel | 桌機下 4 個項目（4×220px + 3×40px gap ≈ 1000px）在 1100px container 中全部可見，Prev/Next 按鈕等同裝飾 | 視覺上無問題，但可考慮桌機隱藏控制列以減少視覺雜訊（非強制） |
+
+## 安全檢查
+
+| 項目 | 結果 |
+|------|------|
+| 外部連結 `rel="noopener noreferrer"` | PASS（Google Play 連結兩處均有） |
+| 第三方 tracker | PASS（下載追蹤僅用 `console.info`，無任何外部 SDK） |
+| XSS / 注入風險 | PASS（純靜態，無動態輸入渲染） |
+| 未授權外部資源 | PASS（僅引用 Google 官方 CDN 徽章圖片） |
+
+## 總結
+
+程式碼整體品質良好，功能範圍完整覆蓋 PRD 需求，響應式設計、無障礙屬性（`aria-label`、`role`）與安全屬性均有考量。4 項 minor 缺陷中最值得注意的是隱私政策頁的 email 佔位值，部署前必須確認或移除；其餘缺陷不影響核心用戶流程。AC-5 與 AC-8 須部署後實測，建議推上 GitHub Pages 後再行確認 Lighthouse 分數。
+
+`[QA_DONE] task_id: TASK-20260401-001 verdict: APPROVE bugs: 0/0/4`

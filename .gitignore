@@ -1,0 +1,6 @@
+.gemini-key
+*.key
+*.env
+.env*
+.DS_Store
+.claude/

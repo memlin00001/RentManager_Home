@@ -1,0 +1,24 @@
+========================================
+  Role   : dispatch
+  Task   : TASK-20260401-001
+  Time   : 2026-04-01 21:55:27
+========================================
+
+```
+[NEW_MISSION]
+title           : App 靜態介紹網頁
+priority        : normal
+complexity      : medium
+raw_instruction : 我要寫一個app的靜態介紹網頁 在github page上使用 請包含文案設計
+clarified_instruction:
+  - 為 Google Play 上架 App（com.rentmanager.app.byD2E）製作靜態介紹網頁
+  - 部署目標為 GitHub Pages（純靜態 HTML/CSS/JS，無後端）
+  - 需包含文案設計（App 功能亮點、行動呼籲、下載連結等）
+  - 參考來源：https://play.google.com/store/apps/details?id=com.rentmanager.app.byD2E
+```
+
+`[DISPATCH_DONE]`
+
+---
+
+要繼續流水線進入 **Team Leader** 階段嗎？還是你想直接讓我開始製作網頁？

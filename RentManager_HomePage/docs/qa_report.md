@@ -1,0 +1,36 @@
+# QA Report
+
+**verdict**: REJECT
+
+## 驗收標準
+
+| AC | 條件 | 結果 | 說明 |
+|----|------|------|------|
+| AC1 | 截圖從 2 張擴充為 5 張 | PASS | carousel 中有 5 個 `.carousel__item` |
+| AC2 | 圖片 URL 使用 `w540-h960-rw` 直式比例 | PASS | 5 張圖片 URL 結尾均含 `w540-h960-rw` |
+| AC3 | 每張截圖對應功能 caption | PASS | 首頁總覽 / 收租記帳 / 房客管理 / 合約追蹤 / 收支報表 |
+| AC4 | `.screenshot-frame` 有手機邊框效果 | PASS | `border-radius: 24px` + `border: 3px solid #1e293b` |
+| AC5 | `.screenshot-img` 設定 `aspect-ratio: 9/16` + `object-fit: cover` | PASS | style.css 確認存在 |
+| AC6 | `.carousel__item` 寬度 200px | PASS | 預設與桌面版均為 200px |
+| AC7 | 桌面版 carousel 保留 scroll 支援 5 張 | PASS | `@media ≥900px` 保留 `overflow-x: auto` |
+
+## 缺陷清單
+
+| # | 嚴重度 | 位置 | 描述 | 建議 |
+|---|--------|------|------|------|
+| 1 | major | `index.html` — carousel items 1–5 | 5 張截圖全部使用相同的圖片 URL，carousel 展示的是同一畫面，無法對應「五大功能各自截圖」的需求目的 | 為每張截圖提供對應功能的不同 URL；若暫無真實截圖，應使用佔位符並明確標記 |
+| 2 | minor | `style.css:284` — `.feature-card:last-child:nth-child(3n - 2)` | `3n-2` 匹配 nth-child(1, 4, 7…)，第 5 個 card 為 `nth-child(5)`，不符合，導致桌面三欄格局下第 5 張功能卡片不會置中 | 改為 `.feature-card:nth-child(5):last-child { grid-column: 2; }` 或更明確的選擇器 |
+
+## 安全檢查
+
+| 項目 | 結果 |
+|------|------|
+| 外部連結 `target="_blank"` 均有 `rel="noopener noreferrer"` | PASS |
+| 無使用者輸入 / 無動態內容 / 無外部腳本注入 | PASS |
+| 圖片來源為 HTTPS（Google Play CDN） | PASS |
+
+## 總結
+
+HTML 結構與 CSS 改動整體符合需求規格，邊框效果、比例設定、捲動行為均正確實作。然而最關鍵的問題是：5 張截圖使用同一張圖片，carousel 展示效果與「對應五大功能」的目的完全背離，屬 major 缺陷需修正。此外 `nth-child` 選擇器邏輯錯誤導致桌面版第 5 張功能卡無法置中，為 minor 問題。
+
+[QA_DONE] task_id: TASK-20260401-001 verdict: REJECT bugs: 0/1/1
