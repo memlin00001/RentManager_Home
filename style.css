@@ -83,6 +83,14 @@ body {
   line-height: 1.7;
 }
 
+.download-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-download { display: inline-block; }
 
 .gplay-badge {
@@ -91,6 +99,13 @@ body {
   transition: transform var(--transition), opacity var(--transition);
 }
 .gplay-badge:hover { transform: scale(1.04); opacity: .9; }
+
+.appstore-badge {
+  height: 42px;
+  border-radius: 8px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.appstore-badge:hover { transform: scale(1.04); opacity: .9; }
 
 .hero__wave {
   display: block;
