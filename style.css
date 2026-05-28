@@ -101,7 +101,7 @@ body {
 .gplay-badge:hover { transform: scale(1.04); opacity: .9; }
 
 .appstore-badge {
-  height: 42px;
+  height: 60px;
   border-radius: 8px;
   transition: transform var(--transition), opacity var(--transition);
 }
